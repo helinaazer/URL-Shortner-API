@@ -9,10 +9,6 @@ using urlShortner;
 [Route("[controller]")]
 public class shortURLsController : ControllerBase
 {
-    // private static readonly string[] Summaries = new[]
-    // {
-    //     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    // };
 
     private readonly ILogger<shortURLsController> _logger;
     private string longUrl;

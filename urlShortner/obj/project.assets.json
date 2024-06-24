@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\My Folders\\Projects\\Projects\\CAP\\Week2\\API\\urlShortner\\urlShortner.csproj",
+      "projectUniqueName": "C:\\My Folders\\Projects\\Projects\\CAP\\Week2\\URL-Shortner-API\\urlShortner\\urlShortner.csproj",
       "projectName": "urlShortner",
-      "projectPath": "C:\\My Folders\\Projects\\Projects\\CAP\\Week2\\API\\urlShortner\\urlShortner.csproj",
+      "projectPath": "C:\\My Folders\\Projects\\Projects\\CAP\\Week2\\URL-Shortner-API\\urlShortner\\urlShortner.csproj",
       "packagesPath": "C:\\Users\\helin\\.nuget\\packages\\",
-      "outputPath": "C:\\My Folders\\Projects\\Projects\\CAP\\Week2\\API\\urlShortner\\obj\\",
+      "outputPath": "C:\\My Folders\\Projects\\Projects\\CAP\\Week2\\URL-Shortner-API\\urlShortner\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\helin\\AppData\\Roaming\\NuGet\\NuGet.Config"
