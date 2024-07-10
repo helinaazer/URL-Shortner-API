@@ -15,11 +15,13 @@ public class shortURLsController : ControllerBase
 
     private readonly ILogger<shortURLsController> _logger;
     private string longUrl;
+    
     public shortURLsController(ILogger<shortURLsController> logger)
     {
         _logger = logger;
     }
 
+    [Authorize(Policy = "AddCustomer")]
     [HttpGet("{urlID}")]
     public ShortUrl Get([FromRoute] string urlID)
     {
@@ -62,5 +64,13 @@ public class shortURLsController : ControllerBase
             //URL = shortUrl.URL, 
             Hits = 4
         };
+    }
+
+    [HttpGet]
+    [Route("navigate/{url}")]
+    public IActionResult NavigateRedirection(string url){
+       // TODO: return
+       return Redirect("http://google.com");
+       
     }
 }
