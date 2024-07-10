@@ -14,8 +14,4 @@ public class ShortUrl
     //representation of a short URL
     public string? UrlID { get; internal set; }
 }
-
-// public class LongUrl {
-//     public string? URL { get; set;}
-// }
     
