@@ -46,11 +46,14 @@ public class BasicAuthenticationHandler(
             {
                 return AuthenticateResult.Fail("Invalid Username or Password");
             }
-        }
-        catch
-        {
+        } catch {
             return AuthenticateResult.Fail("Invalid Authorization Header");
         }
+
+        
+        
     }
+
+    
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
 }
