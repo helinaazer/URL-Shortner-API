@@ -1,48 +1,70 @@
-using System.Text.Json;
-//using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace UrlShortner.Controllers;
+namespace urlShortner.Controllers;
 
-// [Authorize(AuthenticationSchemes = $"{JwtBearerDefaults.AuthenticationScheme},BasicAuthentication")]
-// [ApiController]
+using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
+using urlShortner;
+
+[ApiController]
 [Route("[controller]")]
-public class ShortUrlsController : ControllerBase
+public class shortURLsController : ControllerBase
 {
-    [Authorize(Policy = "AddCustomer")]
-    [HttpPut("{id}")]
-    public string CreateShortUrl(string id, [FromBody] JsonElement body)
+
+    private readonly ILogger<shortURLsController> _logger;
+    private string longUrl;
+    public shortURLsController(ILogger<shortURLsController> logger)
     {
-        Console.WriteLine($"request to create: {id}, {body.GetProperty("url")}");
-        return "https://shortUrl.com";
+        _logger = logger;
     }
 
-    [Authorize(Roles = "Emperor,Deacon")]
-    [HttpDelete("{id}")]
-    public string DeleteShortUrl(string id)
+    [HttpGet("{urlID}")]
+    public ShortUrl Get([FromRoute] string urlID)
     {
-        Console.WriteLine($"request to delete: {id}");
-        return "deleted!";
+// TODO: return
+        return new ShortUrl()
+        {
+            UrlID = urlID,
+            CreatedBy = "Helina Azer",
+        };
     }
 
-    [AllowAnonymous]
-    [HttpGet("{id}")]
-    public string GetShortUrl(string id)
-    {
-        Console.WriteLine($"request to get: {id}");
-        return "shortUrl";
+    [HttpPut("{urlID}")]
+    public ShortUrl Put([FromRoute] string urlID, [FromBody] ShortUrl shortUrl) {
+        return new ShortUrl() { 
+            UrlID = urlID,
+            URL = shortUrl.URL,
+            CreatedBy = "Helina Azer", 
+        };
     }
 
+    // [HttpPut("{urlID}")]
+    // public ShortUrl Put([FromBody] LongUrl body) {
+    //     return longUrl = body.URL;
+    // }
+
+    [HttpDelete("{urlID}")]
+    public ShortUrl Delete([FromRoute] string urlID) {
+        return new ShortUrl() {
+            UrlID = null,
+        };
+    }
+    
+    [HttpGet("{urlID}/hits")]
+    public ShortUrl Hits([FromRoute] string urlID)
+    {
+        //return 4;
+        return new ShortUrl()
+        {
+            UrlID = urlID,
+            //URL = shortUrl.URL, 
+            Hits = 4
+        };
+    }
     [HttpGet]
-    public List<string> List()
-    {
-        Console.WriteLine($"request to list");
-
-        return
-        [
-            "url1",
-            "url2"
-        ];
+    [Route("navigate/{url}")]
+    public IActionResult NavigateRedirection(string url){
+       // TODO: return
+       return Redirect("http://google.com");
+       
     }
 }
