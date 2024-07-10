@@ -1,0 +1,7 @@
+C:\My Folders\Projects\Projects\CAP\Week2\URL-Shortner-API\bin\Publish\urlShortner.exe
+C:\My Folders\Projects\Projects\CAP\Week2\URL-Shortner-API\bin\Publish\appsettings.Development.json
+C:\My Folders\Projects\Projects\CAP\Week2\URL-Shortner-API\bin\Publish\appsettings.json
+C:\My Folders\Projects\Projects\CAP\Week2\URL-Shortner-API\bin\Publish\urlShortner.dll
+C:\My Folders\Projects\Projects\CAP\Week2\URL-Shortner-API\bin\Publish\urlShortner.deps.json
+C:\My Folders\Projects\Projects\CAP\Week2\URL-Shortner-API\bin\Publish\urlShortner.runtimeconfig.json
+C:\My Folders\Projects\Projects\CAP\Week2\URL-Shortner-API\bin\Publish\urlShortner.pdb

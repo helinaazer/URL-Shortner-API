@@ -1,4 +1,4 @@
-@WebApplication4_HostAddress = http://localhost:5160
+@WebApplication4_HostAddress = urlshortnercap.azurewebsites.net
 
 # API: Get short url
 # This call should retrun a string "http://localhost:5160/navigate/ge123"
