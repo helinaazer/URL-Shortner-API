@@ -49,3 +49,13 @@ C:\My Folders\Projects\Projects\CAP\Week2\URL-Shortner-API\urlShortner\obj\Debug
 C:\My Folders\Projects\Projects\CAP\Week2\URL-Shortner-API\urlShortner\obj\Debug\net8.0\urlShortner.pdb
 C:\My Folders\Projects\Projects\CAP\Week2\URL-Shortner-API\urlShortner\obj\Debug\net8.0\urlShortner.genruntimeconfig.cache
 C:\My Folders\Projects\Projects\CAP\Week2\URL-Shortner-API\urlShortner\obj\Debug\net8.0\ref\urlShortner.dll
+C:\My Folders\Projects\Projects\CAP\Week2\URL-Shortner-API\urlShortner\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\My Folders\Projects\Projects\CAP\Week2\URL-Shortner-API\urlShortner\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\My Folders\Projects\Projects\CAP\Week2\URL-Shortner-API\urlShortner\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\My Folders\Projects\Projects\CAP\Week2\URL-Shortner-API\urlShortner\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\My Folders\Projects\Projects\CAP\Week2\URL-Shortner-API\urlShortner\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\My Folders\Projects\Projects\CAP\Week2\URL-Shortner-API\urlShortner\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\My Folders\Projects\Projects\CAP\Week2\URL-Shortner-API\urlShortner\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\My Folders\Projects\Projects\CAP\Week2\URL-Shortner-API\urlShortner\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\My Folders\Projects\Projects\CAP\Week2\URL-Shortner-API\urlShortner\obj\Debug\net8.0\urlShortner.csproj.AssemblyReference.cache
+C:\My Folders\Projects\Projects\CAP\Week2\URL-Shortner-API\urlShortner\obj\Debug\net8.0\urlShort.A55E3C90.Up2Date
