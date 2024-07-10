@@ -9,11 +9,11 @@ namespace UrlShortner.Controllers;
 [Route("[controller]")]
 public class NavigateController : ControllerBase
 {
-    [AllowAnonymous]
-    [HttpGet("{shortUrl}")]
-    public RedirectResult Navigate(string shortUrl)
-    {
-        Console.WriteLine($"request to navigate for {shortUrl}");
-        return Redirect("https://www.google.com");
+        [HttpGet]
+    [Route("navigate/{url}")]
+    public IActionResult NavigateRedirection(string url){
+       // TODO: return
+       return Redirect("http://google.com");
+       
     }
 }
