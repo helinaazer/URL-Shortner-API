@@ -33,6 +33,7 @@ public class shortURLsController : ControllerBase
         };
     }
 
+    [Authorize(Policy = "AddCustomer")]
     [HttpPut("{urlID}")]
     public ShortUrl Put([FromRoute] string urlID, [FromBody] ShortUrl shortUrl) {
         return new ShortUrl() { 
@@ -47,6 +48,7 @@ public class shortURLsController : ControllerBase
     //     return longUrl = body.URL;
     // }
 
+    [Authorize(Roles = "Emperor,Deacon")]
     [HttpDelete("{urlID}")]
     public ShortUrl Delete([FromRoute] string urlID) {
         return new ShortUrl() {
@@ -54,6 +56,7 @@ public class shortURLsController : ControllerBase
         };
     }
     
+    [AllowAnonymous]
     [HttpGet("{urlID}/hits")]
     public ShortUrl Hits([FromRoute] string urlID)
     {
@@ -66,6 +69,7 @@ public class shortURLsController : ControllerBase
         };
     }
 
+    [AllowAnonymous]
     [HttpGet]
     [Route("navigate/{url}")]
     public IActionResult NavigateRedirection(string url){
