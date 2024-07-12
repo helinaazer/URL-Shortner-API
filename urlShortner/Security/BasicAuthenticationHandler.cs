@@ -28,21 +28,20 @@ namespace UrlShortner.Security
                 var enteredPassword = credentials[1];
                 var user = DataMock.Users.FirstOrDefault(u => u.Email!.Equals(email, StringComparison.OrdinalIgnoreCase));
                 
-                byte[] saltBytes;
+                // byte[] saltBytes;
+                // string salt;
                 if (user == null)
                 {
                     return AuthenticateResult.Fail("User not found");
-                } else {
-                    string s = user.PasswordSalt;
-                    saltBytes = Convert.FromBase64String(s);
-                    Console.WriteLine(s);
                 }
+                //  else { 
+                //     salt = user.PasswordSalt;
+                //     saltBytes = Convert.FromBase64String(salt);
+                // }
                 
+                var hashedPassword = HashPassword(enteredPassword, user.PasswordSalt);
                 
-                var hashedPassword = HashPassword(enteredPassword, saltBytes);
-                var hashedPasswordExist = HashPassword(user.Password, saltBytes);
-
-                if (hashedPassword == hashedPasswordExist)
+                if (hashedPassword == user.Password)
                 {
                     var claims = new[] { new Claim("emails", email) };
                     var identity = new ClaimsIdentity(claims, Scheme.Name);
@@ -60,10 +59,13 @@ namespace UrlShortner.Security
                 return AuthenticateResult.Fail("Invalid Authorization Header");
             }
         }
-        private string HashPassword(string password, byte[] salt)
+
+        public string HashPassword(string password, string salt)
         {
             using var sha512 = new SHA512Managed();
-            var saltedPassword = Encoding.UTF8.GetBytes(password).Concat(salt).ToArray();
+            var saltBytes = Encoding.UTF8.GetBytes(salt);
+            var passwordBytes = Encoding.UTF8.GetBytes(password);
+            var saltedPassword = passwordBytes.Concat(saltBytes).ToArray();
             var hashedBytes = sha512.ComputeHash(saltedPassword);
             return Convert.ToBase64String(hashedBytes);
         }
