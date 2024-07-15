@@ -8,9 +8,6 @@ using UrlShortner.Security;
 
 namespace urlShortner.Controllers;
 
-
-
-
 [Authorize(AuthenticationSchemes = $"{JwtBearerDefaults.AuthenticationScheme},BasicAuthentication")]
 [ApiController]
 [Route("[controller]")]
