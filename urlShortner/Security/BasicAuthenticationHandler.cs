@@ -28,16 +28,10 @@ namespace UrlShortner.Security
                 var enteredPassword = credentials[1];
                 var user = DataMock.Users.FirstOrDefault(u => u.Email!.Equals(email, StringComparison.OrdinalIgnoreCase));
                 
-                // byte[] saltBytes;
-                // string salt;
                 if (user == null)
                 {
                     return AuthenticateResult.Fail("User not found");
                 }
-                //  else { 
-                //     salt = user.PasswordSalt;
-                //     saltBytes = Convert.FromBase64String(salt);
-                // }
                 
                 var hashedPassword = HashPassword(enteredPassword, user.PasswordSalt);
                 
