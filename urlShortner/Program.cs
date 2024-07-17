@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using UrlShortner.Helper;
 using UrlShortner.Security;
@@ -13,6 +14,11 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddControllers();
+        
+        builder.Services.AddScoped<UrlShortenerContext>();
+        builder.Services.AddDbContext<UrlShortenerContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
         builder.Services.AddAuthentication(options =>
         {
             options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -61,5 +67,9 @@ public class Program
         app.MapControllers();
 
         app.Run();
+
+        //builder.Services.AddScoped<UrlShortenerContext>();
+
+        //builder.Services.AddDbContext<UrlShortenerContext>();
     }
 }

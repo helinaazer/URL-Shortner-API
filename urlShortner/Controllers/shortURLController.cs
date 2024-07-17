@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
-using urlShortner;
-using UrlShortner.Helper;
-using UrlShortner.Security;
+//using urlShortner.Models.UrlShortenerContext;
+//using urlShortner.Models;
+//using urlShortner;
+//using UrlShortner.Helper;
+// using UrlShortner.Security;
 
 namespace urlShortner.Controllers;
 
@@ -15,31 +17,84 @@ public class shortURLsController : ControllerBase
 {
 
     private readonly ILogger<shortURLsController> _logger;
-    private string longUrl;
+    //private string longUrl;
 
-    // private UrlShortenerContext _context;
+    private readonly UrlShortenerContext _context;
     
-    // public shortURLsController(ILogger<shortURLsController> logger, UrlShortenerContext context)
-    // {
-    //     _logger = logger;
-    //     _context = context;
-    // }
-
-    public shortURLsController(ILogger<shortURLsController> logger)
+    public shortURLsController(ILogger<shortURLsController> logger, UrlShortenerContext context)
     {
         _logger = logger;
+        _context = context;
     }
 
-    [Authorize(Policy = "AccessCode")]
-    //shorturls/url1
+    // public shortURLsController(ILogger<shortURLsController> logger)
+    // {
+    //     _logger = logger;
+    // }
+
+    // [Authorize(Policy = "AccessCode")]
+    // //shorturls/url1
+    // [HttpGet("{urlID}")]
+    // public ShortUrl Get([FromRoute] string urlID)
+    // {
+    //     return new ShortUrl()
+    //     {
+    //         UrlID = urlID,
+    //         CreatedBy = "Helina Azer",
+    //     };
+    // }
+
+    [AllowAnonymous]
     [HttpGet("{urlID}")]
-    public ShortUrl Get([FromRoute] string urlID)
-    {
-        return new ShortUrl()
+    public string Get([FromRoute] string urlID){
+        var url = _context.Urls.SingleOrDefault(u => u.UrlId == urlID);
+        if (url == null)
         {
-            UrlID = urlID,
-            CreatedBy = "Helina Azer",
+            return "Shortened URL not found.";
+        }
+        return url.ShortenedUrl;
+    }
+
+    [AllowAnonymous]
+    [HttpGet("original/url/{shortUrl}")]
+    public string GetOriginalUrl(string shortUrl)
+    {
+        var url = _context.Urls.SingleOrDefault(u => u.ShortenedUrl == shortUrl);
+        if (url == null)
+        {
+            return "Shortened URL not found.";
+        }
+        return url.OriginalUrl;
+    }
+
+    [AllowAnonymous]
+    [HttpPost("addUrl")]
+    public string AddUrl() {
+        string longUrl = "www.meta.com";
+        int customerId = 2;
+        string urlId = "urlTest";
+        string shortUrl = "www.m.com";
+
+        var newUrl = new Url {
+        UrlId = urlId,
+        OriginalUrl = longUrl,
+        ShortenedUrl = shortUrl,
+        UserId = customerId,
         };
+
+        // Add the new entity to the Urls DbSet
+        _context.Urls.Add(newUrl);
+
+        // Save the changes to the database
+        _context.SaveChanges();
+
+        var url = _context.Urls.SingleOrDefault(u => u.ShortenedUrl == shortUrl);
+        if (url == null) {
+            return "Shortened URL not found.";
+        }
+        
+        return url.OriginalUrl;
+        
     }
 
     [Authorize(Policy = "CreateProduct")]
