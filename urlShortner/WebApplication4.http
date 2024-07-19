@@ -1,5 +1,5 @@
-//@host = urlshortnercap.azurewebsites.net
-@host = http://localhost:5160
+@host = urlshortnercap.azurewebsites.net
+//@host = http://localhost:5160
 # API: Get short url
 # This call should retrun a string "http://localhost:5160/navigate/ge123"
 # API: Get short url
@@ -17,19 +17,19 @@ Authorization: Basic email1@gmail.com:p1a1s1s1w1o1r1d
 ###
 
 # API: Create or update short url
-PUT {{host}}/shortUrls/urlId2
+PUT {{host}}/shortUrls/urlId7
 Accept: application/json
 Content-Type: application/json
 Authorization: Basic email1@gmail.com:p1a1s1s1w1o1r1d
 
 {
-    "url": "https://www.leetcode.com/"
+    "url": "http://www.facebook.com/"
 }
 
 ###
 
 # API: delete short url
-DELETE {{host}}/shortUrls/urlId2
+DELETE {{host}}/shortUrls/urlId7
 Accept: application/json
 Authorization: Basic email1@gmail.com:p1a1s1s1w1o1r1d
 
