@@ -1,43 +1,46 @@
-//@WebApplication4_HostAddress = urlshortnercap.azurewebsites.net/shorturls/url1
-@WebApplication4_HostAddress = http://localhost:5160/shorturls/url1
+//@host = urlshortnercap.azurewebsites.net
+@host = http://localhost:5160
 # API: Get short url
 # This call should retrun a string "http://localhost:5160/navigate/ge123"
-GET {{WebApplication4_HostAddress}}/shortUrls/url1
+# API: Get short url
+GET {{host}}/shortUrls/urlId1
 Accept: application/json
+Authorization: Basic email1@gmail.com:p1a1s1s1w1o1r1d
+
+###
+
+# API: list all urls
+GET {{host}}/shortUrls
+Accept: application/json
+Authorization: Basic email1@gmail.com:p1a1s1s1w1o1r1d
 
 ###
 
 # API: Create or update short url
-# This call should return a string "http://localhost:5160/navigate/ge123"
-PUT {{WebApplication4_HostAddress}}/shortUrls/url1
+PUT {{host}}/shortUrls/urlId2
 Accept: application/json
 Content-Type: application/json
+Authorization: Basic email1@gmail.com:p1a1s1s1w1o1r1d
 
 {
-    "url": "http://www.google.com/longurl"
+    "url": "https://www.leetcode.com/"
 }
 
 ###
 
 # API: delete short url
-# This call should return empty body
-DELETE {{WebApplication4_HostAddress}}/shortUrls/url1
+DELETE {{host}}/shortUrls/urlId2
 Accept: application/json
+Authorization: Basic email1@gmail.com:p1a1s1s1w1o1r1d
 
 ###
 
-# API: Get number of hits
-# this call should return an integer
-GET {{WebApplication4_HostAddress}}/shortUrls/url1/hits
-Accept: application/json
+# # API: Get number of hits
+# GET {{host}}/shortUrls/urlId1/hits
+# Accept: application/json
 
 ###
 # API: navigate to shortUrl
-# this call should redirect the user to www.google.com
-# for how to do that, check https://stackoverflow.com/questions/52308563/redirect-to-url-in-asp-net-core
-# GET {{WebApplication4_HostAddress}}/navigate/ge123
-# Accept: application/json
-
-
-GET {{WebApplication4_HostAddress}}/shortUrls/navigate/ge123
+GET {{host}}/navigate/urlId3
 Accept: application/json
+Authorization: Basic email1@gmail.com:p1a1s1s1w1o1r1d
